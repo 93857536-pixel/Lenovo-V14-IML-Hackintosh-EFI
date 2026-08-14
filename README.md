@@ -10,7 +10,7 @@
 | CPU | Intel Core i3-10110U (Comet Lake, 2C4T) |
 | 核显 | Intel UHD Graphics 620 (GT2) |
 | 内存 | 12GB DDR4 2667MHz |
-| 硬盘 | 三星 MZALQ256HBJD (PM991) 256GB NVMe |
+| 硬盘 | 三星 MZALQ256HBJD (PM991) 256GB NVMe ⚠️ 黑苹果兼容性一般,有概率卡硬盘 |
 | 无线 | Intel Wireless-AC 9560 (社区方案驱动, WiFi 可用) |
 | 蓝牙 | Intel (IntelBluetoothFirmware + IntelBTPatcher) |
 | 声卡 | Realtek ALC (AppleALC, alcid=11) |
@@ -103,7 +103,11 @@ AMFIPass 1.4.1, BlueToolFixup 2.7.2, IntelBluetoothFirmware 2.5.0, IntelBTPatche
 
 ## 已知要点
 
-- 本配置实测 **Ventura 13** 代系统完全可用(含 WiFi/蓝牙/声卡/亮度/电池/键盘触控板)
+- ⚠️ **硬盘兼容性**:本机三星 PM991 (MZALQ256HBJD) NVMe 对黑苹果兼容性一般,
+  **有概率出现"卡硬盘"(系统卡死/无响应)**。卡死后只能强制重启(长按电源键),
+  重启后恢复正常。若频繁卡硬盘,可尝试加 boot-args `-nvmefix`(NVMeFix 已内置)
+  或考虑更换更兼容的 NVMe 盘(如西数 SN770 / 铠侠 RC20 等)
+- 本配置实测 **macOS 26 Tahoe (26.5.2)** 完全可用(含 WiFi/蓝牙/声卡/亮度/电池/键盘触控板)
 - `igfxonln=1` / `-igfxmlr` 参数会导致 AppleIntelCFLGraphicsFramebuffer
   SetupDPTimings 除零 panic —— **不要添加**
 - 睡眠: 如异常可 boot-args 加 `hibernatemode=0` 并 pmset 关闭休眠
