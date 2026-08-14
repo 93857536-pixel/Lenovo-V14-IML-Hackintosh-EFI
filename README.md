@@ -24,7 +24,7 @@
 ## 系统与 OpenCore
 
 - **macOS 版本: macOS 26 Tahoe (26.5.2, 构建号 25F84, Darwin 25.5.0)**
-- 核显: Comet Lake UHD 620 在 Tahoe 26 内核已砍驱动,必须用 **OCLP-Mod 3.1.x 打显卡补丁**(从旧系统提取 AppleIntelCFLGraphicsFramebuffer 注入),补丁装好后显卡正常加速
+- 核显: Comet Lake UHD 620 在 Tahoe 26 内核已砍驱动,必须用 **OCLP(OpenCore Legacy Patcher)打显卡补丁**(从旧系统提取 AppleIntelCFLGraphicsFramebuffer 注入),补丁装好后显卡正常加速。官方 OCLP 2.7.0(AutoPkg-Assets.pkg)与 OCLP-Mod 3.1.x 均可
 - WiFi: Tahoe 26 无官方 Intel WiFi 驱动,用社区 5 kext 方案
   (IOSkywalkFamily + IO80211FamilyLegacy + AirportItlwm_Ventura + AMFIPass + BlueToolFixup) 实现
 - OpenCore: 较新版本(2025-11-20 构建,自备,非官方 oc107)
@@ -87,7 +87,8 @@ AMFIPass 1.4.1, BlueToolFixup 2.7.2, IntelBluetoothFirmware 2.5.0, IntelBTPatche
    `bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/EFI/BOOT/BOOTx64.efi` 常驻内置盘
 4. **⚠️ 进系统后必须打 OCLP 补丁**:Tahoe 26 内核已砍 Comet Lake 核显驱动,
    不打补丁显卡会 VRAM 4MB 无加速。安装包 = `AutoPkg-Assets.pkg`
-   (Dortania OpenCore Legacy Patcher 2.7.0,放在 U 盘根目录,~941MB)
+   (Dortania OpenCore Legacy Patcher 2.7.0,放在 U 盘根目录,~941MB;
+   官方 OCLP 与 OCLP-Mod 3.1.x 均可使用)
    - 双击安装 OCLP → 打开 OpenCore-Patcher → 点"开始安装驱动补丁" → 重启
    - 要求: config 已设 csr-active-config=ff0f0000 + boot-args 含 `amfi=0x80`(本仓库已配好)
    - 若 OCLP 报错 `RtWlanU*` Realtek 残留驱动阻塞,先删
