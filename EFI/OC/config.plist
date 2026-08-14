@@ -38,6 +38,14 @@
 				<key>Path</key>
 				<string>SSDT-AWAC-DISABLE.aml</string>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>_OSI override to return true through Windows 11, version 22H2 - requires _OSI to XOSI rename</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-XOSI.aml</string>
+			</dict>
 		</array>
 		<key>Delete</key>
 		<array/>
@@ -156,6 +164,46 @@
 				<key>TableSignature</key>
 				<data>
 				RFNEVA==
+				</data>
+			</dict>
+			<dict>
+				<key>Base</key>
+				<string></string>
+				<key>BaseSkip</key>
+				<integer>0</integer>
+				<key>Comment</key>
+				<string>_OSI to XOSI rename - requires SSDT-XOSI.aml</string>
+				<key>Count</key>
+				<integer>0</integer>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				X09TSQ==
+				</data>
+				<key>Limit</key>
+				<integer>0</integer>
+				<key>Mask</key>
+				<data>
+				</data>
+				<key>OemTableId</key>
+				<data>
+				AAAAAAAAAAA=
+				</data>
+				<key>Replace</key>
+				<data>
+				WE9TSQ==
+				</data>
+				<key>ReplaceMask</key>
+				<data>
+				</data>
+				<key>Skip</key>
+				<integer>0</integer>
+				<key>TableLength</key>
+				<integer>0</integer>
+				<key>TableSignature</key>
+				<data>
+				AAAAAA==
 				</data>
 			</dict>
 		</array>
@@ -888,11 +936,11 @@
 		<key>Debug</key>
 		<dict>
 			<key>AppleDebug</key>
-			<true/>
+			<false/>
 			<key>ApplePanic</key>
-			<true/>
+			<false/>
 			<key>DisableWatchDog</key>
-			<true/>
+			<false/>
 			<key>DisplayDelay</key>
 			<integer>0</integer>
 			<key>DisplayLevel</key>
