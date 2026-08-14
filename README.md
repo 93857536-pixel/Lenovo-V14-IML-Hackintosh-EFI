@@ -11,7 +11,7 @@
 | 核显 | Intel UHD Graphics 620 (GT2) |
 | 内存 | 12GB DDR4 2667MHz |
 | 硬盘 | 三星 MZALQ256HBJD (PM991) 256GB NVMe |
-| 无线 | Intel Wireless-AC 9560 (AirportItlwm 驱动, WiFi 可用) |
+| 无线 | Intel Wireless-AC 9560 (社区方案驱动, WiFi 可用) |
 | 蓝牙 | Intel (IntelBluetoothFirmware + IntelBTPatcher) |
 | 声卡 | Realtek ALC (AppleALC, alcid=11) |
 | 触控板 | I2C HID (VoodooI2C + VoodooI2CHID) |
@@ -23,7 +23,10 @@
 
 ## 系统与 OpenCore
 
-- macOS: Ventura / Sonoma 代系统(原生 AppleIntelCFLGraphicsFramebuffer 可用)
+- **macOS 版本: macOS 26 Tahoe (26.5.2, 构建号 25F84, Darwin 25.5.0)**
+- 核显: Comet Lake UHD 620 在 Tahoe 26 内核已砍驱动,必须用 **OCLP-Mod 3.1.x 打显卡补丁**(从旧系统提取 AppleIntelCFLGraphicsFramebuffer 注入),补丁装好后显卡正常加速
+- WiFi: Tahoe 26 无官方 Intel WiFi 驱动,用社区 5 kext 方案
+  (IOSkywalkFamily + IO80211FamilyLegacy + AirportItlwm_Ventura + AMFIPass + BlueToolFixup) 实现
 - OpenCore: 较新版本(2025-11-20 构建,自备,非官方 oc107)
 - EFI 结构: OC/ 成品版(22 kext / 26 Kernel-Add 条目 / 5 drivers / 4 SSDT) + BOOT/
 
